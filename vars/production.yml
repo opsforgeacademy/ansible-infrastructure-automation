@@ -1,0 +1,4 @@
+---
+deployment_env: production
+application_name: nginx
+application_port: 80
