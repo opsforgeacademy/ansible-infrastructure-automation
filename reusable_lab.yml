@@ -1,0 +1,17 @@
+---
+- name: Reusable Application Playbook
+  hosts: local
+  gather_facts: false
+  vars_files:
+    - "vars/{{ target_env }}.yml"
+  tasks:
+    - name: Display application configuration
+      ansible.builtin.debug:
+        msg: "Deploying {{ application_name }} in {{ deployment_env }} on port {{ application_port }}"
+    - name: Validate deployment environment
+      ansible.builtin.assert:
+        that:
+          - deployment_env in ["development", "staging", "production"]
+          - deployment_env == target_env
+        success_msg: Environment validation passed
+        fail_msg: Invalid deployment environment
