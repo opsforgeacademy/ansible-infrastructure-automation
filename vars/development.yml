@@ -1,0 +1,4 @@
+---
+deployment_env: development
+application_name: nginx
+application_port: 8080
